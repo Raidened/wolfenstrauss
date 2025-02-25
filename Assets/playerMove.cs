@@ -25,6 +25,7 @@ public class playerMove : MonoBehaviour
     void FixedUpdate()
     {
         rb2d.velocity = new Vector2(move * moveSpeed, rb2d.velocity.y);
+        
         if (activateJump)
         {
             rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -38,7 +39,7 @@ public class playerMove : MonoBehaviour
         move = Input.GetAxis("Horizontal");
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Physics2D.Raycast(transform.position, Vector2.down, 0.7f, GroundLayer))
+            if (Physics2D.Raycast(transform.position, Vector2.down, 1.5f, GroundLayer))
             {
                 activateJump = true;
             }
