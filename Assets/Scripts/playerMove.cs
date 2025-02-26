@@ -11,17 +11,19 @@ public class playerMove : MonoBehaviour
     public bool grounded;
     private bool activateJump = false;
     
-    // private bool canDash = true;
-    // private bool isDashing = false;
-    // private float dashForce = 20f; 
-    // private float dashTime = 0.2f;
-    // private float dashCooldown = 2f;
-
+    private bool canDash = true;
+    private bool isDashing;
+    private float dashForce = -40f; 
+    private float dashTime = 0.1f;
+    private float dashCooldown = 1f;
+    
     [SerializeField]private LayerMask GroundLayer;
     [SerializeField]private float moveSpeed;
     [SerializeField]private float jumpForce;
     [SerializeField]private TrailRenderer trail;
-
+    
+    
+    // Awake is called before the 
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -34,8 +36,38 @@ public class playerMove : MonoBehaviour
         
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        if (isDashing)
+        {
+            return;
+        }
+        move = Input.GetAxis("Horizontal");
+
+        grounded = Physics2D.Raycast(transform.position, Vector2.down, 1.5f, GroundLayer);
+        
+        if (Input.GetKeyDown(KeyCode.Space) && grounded)  // Activate Jump with Space when on ground
+        {
+            activateJump = true;
+        }
+        Debug.Log(move);
+        SetAnim();
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)  // Activate Dash with Left Shift when can Dash
+        {
+            StartCoroutine(Dash());
+            Debug.Log("Dash");
+        }
+    }
+    
+    // FixedUpdate is called once each two frames
     void FixedUpdate()
     {
+        if (isDashing)
+        {
+            return;
+        }
         rb2d.velocity = new Vector2(move * moveSpeed, rb2d.velocity.y);
         
         if (activateJump)
@@ -44,53 +76,44 @@ public class playerMove : MonoBehaviour
             activateJump = false; 
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        move = Input.GetAxis("Horizontal");
-
-        grounded = Physics2D.Raycast(transform.position, Vector2.down, 1.5f, GroundLayer);
-        
-        if (Input.GetKeyDown(KeyCode.Space) && grounded)
-        {
-            activateJump = true;
-        }
-        Debug.Log(move);
-        SetAnim();
-    }
-
+    
+    // Animation
     void SetAnim()
     {
-        if (!grounded)
+        if (move == 0)
         {
-            anim.SetInteger("Dir", 2); // Animation de saut
-            
+            anim.SetInteger("Dir", 0); // Idle Animation
         }
-        else if (move == 0)
+        else if (!grounded)
         {
-            anim.SetInteger("Dir", 0); // Animation d'Idle
+            anim.SetInteger("Dir", 2); // Jump Animation
         }
         else if (move > 0)
         {
             anim.SetInteger("Dir", 1);
-            GetComponent<SpriteRenderer>().flipX = false;
+            GetComponent<SpriteRenderer>().flipX = false; // Run Animation right
         }
         else if (move < 0)
         {
             anim.SetInteger("Dir", 1);
-            GetComponent<SpriteRenderer>().flipX = true;
+            GetComponent<SpriteRenderer>().flipX = true; // Run Animation left
         }
     }
-
-    // private IEnumerator Dash()
-    // {
-    //     canDash = false;
-    //     isDashing = true;
-    //     float originalGravity = rb2d.gravityScale;
-    //     rb2d.gravityScale = 0f;
-    //     rb2d.velocity = new Vector2(move * dashForce, 0f);
-    //     yield return new WaitForSeconds(dashTime);
-    // }
-
+    
+    // Dash
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = rb2d.gravityScale;
+        rb2d.gravityScale = 0f;
+        rb2d.velocity = new Vector2(transform.localScale.x * dashForce, 0f);
+        trail.emitting = true;
+        yield return new WaitForSeconds(dashTime);
+        trail.emitting = false;
+        rb2d.gravityScale = originalGravity;
+        isDashing = false;
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
+    }
 }
