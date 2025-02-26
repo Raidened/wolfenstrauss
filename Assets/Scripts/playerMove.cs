@@ -47,14 +47,14 @@ public class playerMove : MonoBehaviour
 
         grounded = Physics2D.Raycast(transform.position, Vector2.down, 1.5f, GroundLayer);
         
-        if (Input.GetKeyDown(KeyCode.Space) && grounded)  // Activate Jump with Space when on ground
+        if (Input.GetKeyDown(KeyCode.Space) && grounded)  // Activate Jump with 'Space' when on ground
         {
             activateJump = true;
         }
         Debug.Log(move);
         SetAnim();
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)  // Activate Dash with Left Shift when can Dash
+        if (Input.GetKeyDown(KeyCode.S) && canDash)  // Activate Dash with 'S' when can Dash
         {
             StartCoroutine(Dash());
             Debug.Log("Dash");
@@ -80,14 +80,15 @@ public class playerMove : MonoBehaviour
     // Animation
     void SetAnim()
     {
-        if (move == 0)
-        {
-            anim.SetInteger("Dir", 0); // Idle Animation
-        }
-        else if (!grounded)
+        if (!grounded)
         {
             anim.SetInteger("Dir", 2); // Jump Animation
         }
+        else if (move == 0)
+        {
+            anim.SetInteger("Dir", 0); // Idle Animation
+        }
+        
         else if (move > 0)
         {
             anim.SetInteger("Dir", 1);

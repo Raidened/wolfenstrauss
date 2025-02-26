@@ -364,7 +364,7 @@ MonoBehaviour:
     m_Bits: 8
   moveSpeed: 4
   jumpForce: 8
-  trail: {fileID: 0}
+  trail: {fileID: 358249031}
 --- !u!50 &358249022
 Rigidbody2D:
   serializedVersion: 4
