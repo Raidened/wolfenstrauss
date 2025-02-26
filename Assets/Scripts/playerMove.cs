@@ -7,17 +7,20 @@ public class playerMove : MonoBehaviour
     private Rigidbody2D rb2d;
     private Animator anim;
     private float move;
-    private bool activateJump = false;
-    public bool grounded;
     
-    private bool isJumping = false;
+    public bool grounded;
+    private bool activateJump = false;
+    
+    // private bool canDash = true;
+    // private bool isDashing = false;
+    // private float dashForce = 20f; 
+    // private float dashTime = 0.2f;
+    // private float dashCooldown = 2f;
 
     [SerializeField]private LayerMask GroundLayer;
-    public Transform groundCheckLeft;
-    public Transform groundCheckRight;
-
     [SerializeField]private float moveSpeed;
     [SerializeField]private float jumpForce;
+    [SerializeField]private TrailRenderer trail;
 
     void Awake()
     {
@@ -38,7 +41,7 @@ public class playerMove : MonoBehaviour
         if (activateJump)
         {
             rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            activateJump = false;
+            activateJump = false; 
         }
     }
 
@@ -47,41 +50,22 @@ public class playerMove : MonoBehaviour
     {
         move = Input.GetAxis("Horizontal");
 
+        grounded = Physics2D.Raycast(transform.position, Vector2.down, 1.5f, GroundLayer);
+        
         if (Input.GetKeyDown(KeyCode.Space) && grounded)
         {
             activateJump = true;
-            isJumping = true;
         }
         Debug.Log(move);
         SetAnim();
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            Vector3 normal = other.GetContact(0).normal;
-            if (normal == Vector3.up)
-            {
-                grounded = true;
-                isJumping = false;
-            }
-        }
-    }
-    
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            grounded = false;
-        }
-    }
-
     void SetAnim()
     {
-        if (isJumping)
+        if (!grounded)
         {
             anim.SetInteger("Dir", 2); // Animation de saut
+            
         }
         else if (move == 0)
         {
@@ -98,5 +82,15 @@ public class playerMove : MonoBehaviour
             GetComponent<SpriteRenderer>().flipX = true;
         }
     }
+
+    // private IEnumerator Dash()
+    // {
+    //     canDash = false;
+    //     isDashing = true;
+    //     float originalGravity = rb2d.gravityScale;
+    //     rb2d.gravityScale = 0f;
+    //     rb2d.velocity = new Vector2(move * dashForce, 0f);
+    //     yield return new WaitForSeconds(dashTime);
+    // }
 
 }
