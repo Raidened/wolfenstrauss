@@ -4,6 +4,7 @@ using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using JetBrains.Annotations;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
     private int damage;
     
     [SerializeField]private HealthBar healthBar;
-    
+    public GameOverScript GameOverScript;
     void Start()
     {
         currentHealth = maxHealth;
@@ -41,7 +42,8 @@ public class PlayerHealth : MonoBehaviour
 	public void Die()
     {
         Debug.Log(gameObject.name + " has died!");
-        Destroy(gameObject);
-		UnityEditor.EditorApplication.isPlaying = false;
+        GameOverScript.Setup();
+        //Destroy(gameObject);
+        // UnityEditor.EditorApplication.isPlaying = false;
     }
 }

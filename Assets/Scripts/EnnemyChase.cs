@@ -16,8 +16,12 @@ public class EnnemyChase : MonoBehaviour
 	public float moveSpeed;
 
 	public int damage;
+
+	private bool isAttacking = false;
 	private float lastAttackTime = 0f;
-	public float attackCooldown = 1f;
+	public float attackCooldown = 2f;
+
+	public float attackAnimationTime = 0.5f;
 	private PlayerHealth playerHealth;
 
     // Awake is called before the 
@@ -41,6 +45,8 @@ public class EnnemyChase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+		if (isAttacking) return;
 		
 		if (Vector2.Distance(transform.position, Player.transform.position) > 6)
 		{	
@@ -68,18 +74,31 @@ public class EnnemyChase : MonoBehaviour
 
 		else if (Vector2.Distance(transform.position, Player.transform.position) <= 6)
 		{	
-			anim.SetInteger("Dir", 1);
+			
 			transform.position = Vector2.MoveTowards(this.transform.position, Player.transform.position, moveSpeed * Time.deltaTime);
 			
 			if (Vector2.Distance(transform.position, Player.transform.position) <= 2f)
 			{	
 				if (Time.time >= lastAttackTime + attackCooldown)
 				{
-					playerHealth.TakeDamage(damage);
-					lastAttackTime = Time.time;
-					Debug.Log("Enemy hit the player!");
+					StartCoroutine(Attack());
 				}
 			}
 		}
+    }
+
+	IEnumerator Attack()
+    {
+        isAttacking = true;
+        anim.SetInteger("Dir", 1);
+        playerHealth.TakeDamage(damage);
+        lastAttackTime = Time.time;
+
+        Debug.Log("Enemy hit the player!");
+
+        yield return new WaitForSeconds(attackAnimationTime);
+
+        anim.SetInteger("Dir", 0);
+        isAttacking = false;
     }
 }
