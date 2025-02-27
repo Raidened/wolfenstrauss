@@ -1,8 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Killzone : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D other)
+     void OnTriggerEnter2D(Collider2D other)
     {
         PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
 

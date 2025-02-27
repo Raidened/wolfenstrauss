@@ -1,20 +1,17 @@
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using JetBrains.Annotations;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
     private int maxHealth = 100;
     private int currentHealth;
-
     private int damage;
-    
     [SerializeField]private HealthBar healthBar;
-    public GameOverScript GameOverScript;
+    [SerializeField]private string sceneName;
+    public GameObject deathScreen;
     void Start()
     {
         currentHealth = maxHealth;
@@ -39,10 +36,14 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 	
-	public void Die()
+    public void Die()
     {
-        Debug.Log(gameObject.name + " has died!");
-        GameOverScript.Setup();
+        healthBar.SetHealth(0);
+        Debug.Log(gameObject.name + " est mort !");
+        deathScreen.SetActive(true);
+        Debug.Log("Respawn dans 3 s");
+        SceneManager.LoadScene(sceneName);
+
         //Destroy(gameObject);
         // UnityEditor.EditorApplication.isPlaying = false;
     }

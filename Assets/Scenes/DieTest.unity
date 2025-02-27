@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 849274765}
-  GameOverScript: {fileID: 0}
+  gameOverScript: {fileID: 0}
 --- !u!114 &88395740
 MonoBehaviour:
   m_ObjectHideFlags: 0

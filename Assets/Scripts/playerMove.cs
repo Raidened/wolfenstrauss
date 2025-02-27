@@ -33,7 +33,7 @@ public class playerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -57,7 +57,6 @@ public class playerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S) && canDash)  // Activate Dash with 'S' when can Dash
         {
             StartCoroutine(Dash());
-            Debug.Log("Dash");
         }
     }
     
