@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
     private int currentHealth;
     private int damage;
     [SerializeField]private HealthBar healthBar;
-    [SerializeField]private string sceneName;
+    [SerializeField]private string thisScene;
     public GameObject deathScreen;
     void Start()
     {
@@ -41,10 +41,6 @@ public class PlayerHealth : MonoBehaviour
         healthBar.SetHealth(0);
         Debug.Log(gameObject.name + " est mort !");
         deathScreen.SetActive(true);
-        Debug.Log("Respawn dans 3 s");
-        SceneManager.LoadScene(sceneName);
-
-        //Destroy(gameObject);
-        // UnityEditor.EditorApplication.isPlaying = false;
+        SceneManager.LoadScene(thisScene);
     }
 }

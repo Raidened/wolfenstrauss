@@ -183,7 +183,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -208,7 +208,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 74637575}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -16.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -231,6 +231,7 @@ GameObject:
   - component: {fileID: 115278940}
   - component: {fileID: 115278939}
   - component: {fileID: 115278945}
+  - component: {fileID: 115278946}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -436,6 +437,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: 50
+--- !u!114 &115278946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115278938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3504a762ca1a9032aab6608239ea8dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &775318589
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,7 +484,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -0.000061035156, y: -3076.72}
+  m_AnchoredPosition: {x: 0, y: -3076.72}
   m_SizeDelta: {x: 0, y: 6152.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &775318591
@@ -530,7 +543,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6.26, y: 0.014954}
+  m_AnchoredPosition: {x: -6.25, y: 0.014954}
   m_SizeDelta: {x: 1615.74, y: 6152.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1188963028

@@ -20,7 +20,7 @@ public class Tutorial : MonoBehaviour
     void Update()
     {
         StartCoroutine(TutorialEvent());
-        Debug.Log("Play Tutorial");  
+        Debug.Log("Play Tutorial");
     }
 
     IEnumerator TutorialEvent()

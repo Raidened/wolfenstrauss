@@ -5,13 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public void Options()
+    // Update is called once per frame
+	void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+        Debug.Log("Credit Menu");
+		SceneManager.LoadScene("Menu");
+		}
+	}
+
+    public void Credit()
     {
-        Debug.Log("Options Menu");
+        Debug.Log("Credit Menu");
+		SceneManager.LoadScene("Credit");
     }
 
-    // Update is called once per frame
     public void Play()
     {
         Debug.Log("Play Game");

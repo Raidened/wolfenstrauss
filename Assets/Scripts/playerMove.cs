@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerMove : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class playerMove : MonoBehaviour
     [SerializeField]private float moveSpeed;
     [SerializeField]private float jumpForce;
     [SerializeField]private TrailRenderer trail;
+
+	[SerializeField]private string nextScene;
+    public GameObject PointFirstLevel;
     
     
     // Awake is called before the 
@@ -37,7 +41,7 @@ public class playerMove : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         if (isDashing)
         {
@@ -57,6 +61,11 @@ public class playerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S) && canDash)  // Activate Dash with 'S' when can Dash
         {
             StartCoroutine(Dash());
+        }
+
+		if (Vector2.Distance(transform.position, PointFirstLevel.transform.position) <= 1f)
+        {
+            SceneManager.LoadScene(nextScene);
         }
     }
     
