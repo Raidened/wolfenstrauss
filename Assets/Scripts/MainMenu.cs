@@ -17,14 +17,14 @@ public class MainMenu : MonoBehaviour
 
     public void Credit()
     {
-        Debug.Log("Credit Menu");
+        Debug.Log("Launch Credit");
 		SceneManager.LoadScene("Credit");
     }
 
     public void Play()
     {
-        Debug.Log("Play Game");
-		SceneManager.LoadScene("Tutorial");
+        Debug.Log("Launch Intro");
+		SceneManager.LoadScene("intro");
     }
 
     public void Quit()

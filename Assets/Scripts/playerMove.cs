@@ -24,7 +24,7 @@ public class playerMove : MonoBehaviour
     [SerializeField]private TrailRenderer trail;
 
 	[SerializeField]private string nextScene;
-    public GameObject PointFirstLevel;
+    public GameObject PointNextLevel;
     
     
     // Awake is called before the 
@@ -43,6 +43,11 @@ public class playerMove : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+		SceneManager.LoadScene("Menu");
+		}
+
         if (isDashing)
         {
             return;
@@ -63,10 +68,11 @@ public class playerMove : MonoBehaviour
             StartCoroutine(Dash());
         }
 
-		if (Vector2.Distance(transform.position, PointFirstLevel.transform.position) <= 1f)
+		if (Vector2.Distance(transform.position, PointNextLevel.transform.position) <= 1f)
         {
             SceneManager.LoadScene(nextScene);
         }
+		
     }
     
     // FixedUpdate is called once each two frames

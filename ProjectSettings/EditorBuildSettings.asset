@@ -6,36 +6,45 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
-    guid: 35e42838c0423a12da07001623c8c0c3
+    path: Assets/Scenes/Levels/1.unity
+    guid: 72fba54d99fbb638785cdc03db781acb
   - enabled: 1
-    path: Assets/Scenes/Tutorial.unity
+    path: Assets/Scenes/Levels/3.unity
+    guid: b827c6d934c64ee4b94e86c5344a96ef
+  - enabled: 1
+    path: Assets/Scenes/Levels/4.unity
+    guid: 2ee2d8ce2a39b644bb89185f2730d1e8
+  - enabled: 1
+    path: Assets/Scenes/Levels/Tutorial.unity
     guid: c59bd21d74e9d46acabe4daba2090390
-  - enabled: 1
-    path: Assets/Scenes/Template Niveau.unity
-    guid: e61e2b8b13d9f114e9c1b04da5e22c52
-  - enabled: 1
-    path: Assets/Scenes/deathscreen,.unity
-    guid: f1400ef9125508149a795e6777d5db91
-  - enabled: 1
-    path: Assets/Scenes/DieTest.unity
-    guid: 7b7137f3b48c21b4eaeb39fb94629d30
-  - enabled: 1
-    path: Assets/Scenes/Killian.unity
-    guid: 85c4731d02a907e4c8356789e906b258
   - enabled: 1
     path: Assets/Scenes/LevelStrauss.unity
     guid: 930a44ede9dd94e3aa67eca696d5e88d
   - enabled: 1
-    path: Assets/Scenes/mapShalom.unity
-    guid: 72fba54d99fbb638785cdc03db781acb
-  - enabled: 1
-    path: Assets/Scenes/mapShalom2.unity
+    path: Assets/Scenes/Levels/2.unity
     guid: f9ee7eb1aa2367e22be09c0a5a59e01f
   - enabled: 1
-    path: Assets/Scenes/Niveau killian.unity
-    guid: 2ee2d8ce2a39b644bb89185f2730d1e8
+    path: Assets/Scenes/Template Niveau.unity
+    guid: e61e2b8b13d9f114e9c1b04da5e22c52
   - enabled: 1
-    path: Assets/Scenes/credit.unity
+    path: Assets/Scenes/Menu.unity
+    guid: 35e42838c0423a12da07001623c8c0c3
+  - enabled: 1
+    path: Assets/Scenes/Killian.unity
+    guid: 85c4731d02a907e4c8356789e906b258
+  - enabled: 1
+    path: Assets/Scenes/intro.unity
+    guid: eb4eadb36d091284caa1234d964c60f3
+  - enabled: 1
+    path: Assets/Scenes/end.unity
+    guid: 9036459596608f542aef4ef57ef3467b
+  - enabled: 1
+    path: Assets/Scenes/DieTest.unity
+    guid: 7b7137f3b48c21b4eaeb39fb94629d30
+  - enabled: 1
+    path: Assets/Scenes/deathscreen,.unity
+    guid: f1400ef9125508149a795e6777d5db91
+  - enabled: 1
+    path: Assets/Scenes/Credit.unity
     guid: 2c14f55dd91d9d641981afaefc934a73
   m_configObjects: {}

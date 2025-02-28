@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Diaporama : MonoBehaviour
 {
@@ -14,6 +15,16 @@ public class Diaporama : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            SceneManager.LoadScene("Tutorial");
+        }
+        
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            SceneManager.LoadScene("Credit");
+        }
+        
         if (Input.anyKeyDown) // Change d'image � chaque touche press�e
         {
             currentSlide = (currentSlide + 1) % slides.Length;
