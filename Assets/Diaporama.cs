@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine;
-
 public class Diaporama : MonoBehaviour
 {
     public GameObject[] slides; // Tableau des images
@@ -16,7 +14,7 @@ public class Diaporama : MonoBehaviour
 
     void Update()
     {
-        if (Input.anyKeyDown) // Change d'image à chaque touche pressée
+        if (Input.anyKeyDown) // Change d'image ï¿½ chaque touche pressï¿½e
         {
             currentSlide = (currentSlide + 1);
             UpdateSlides();

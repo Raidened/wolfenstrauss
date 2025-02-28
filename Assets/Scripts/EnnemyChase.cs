@@ -20,7 +20,7 @@ public class EnnemyChase : MonoBehaviour
 	private bool isAttacking = false;
 	private float lastAttackTime = 0f;
 	public float attackCooldown = 2f;
-
+	public int distanceattack = 6;
 	public float attackAnimationTime = 0.5f;
 	private PlayerHealth playerHealth;
 
@@ -48,7 +48,7 @@ public class EnnemyChase : MonoBehaviour
 
 		if (isAttacking) return;
 		
-		if (Vector2.Distance(transform.position, Player.transform.position) > 6)
+		if (Vector2.Distance(transform.position, Player.transform.position) > distanceattack)
 		{	
 			anim.SetInteger("Dir", 0);
 			Vector2 Point = currentPoint.position - transform.position;
@@ -72,7 +72,7 @@ public class EnnemyChase : MonoBehaviour
 			}
 		}
 
-		else if (Vector2.Distance(transform.position, Player.transform.position) <= 6)
+		else if (Vector2.Distance(transform.position, Player.transform.position) <= distanceattack)
 		{	
 			
 			transform.position = Vector2.MoveTowards(this.transform.position, Player.transform.position, moveSpeed * Time.deltaTime);
