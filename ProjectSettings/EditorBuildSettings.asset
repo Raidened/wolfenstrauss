@@ -36,6 +36,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Niveau killian.unity
     guid: 2ee2d8ce2a39b644bb89185f2730d1e8
   - enabled: 1
-    path: Assets/Scenes/Credit.unity
+    path: Assets/Scenes/credit.unity
     guid: 2c14f55dd91d9d641981afaefc934a73
   m_configObjects: {}

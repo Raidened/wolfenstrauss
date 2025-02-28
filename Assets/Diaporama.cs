@@ -18,7 +18,7 @@ public class Diaporama : MonoBehaviour
     {
         if (Input.anyKeyDown) // Change d'image à chaque touche pressée
         {
-            currentSlide = (currentSlide + 1);
+            currentSlide = (currentSlide + 1) % slides.Length;
             UpdateSlides();
         }
     }
