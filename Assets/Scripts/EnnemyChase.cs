@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnnemyChase : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class EnnemyChase : MonoBehaviour
 	public int distanceattack = 6;
 	public float attackAnimationTime = 0.5f;
 	private PlayerHealth playerHealth;
+	public Image RedScreen;
+
 
     // Awake is called before the 
 
@@ -93,6 +96,10 @@ public class EnnemyChase : MonoBehaviour
         anim.SetInteger("Dir", 1);
         playerHealth.TakeDamage(damage);
         lastAttackTime = Time.time;
+		RedScreen.gameObject.SetActive(true);
+		yield return new WaitForSeconds(0.01f);
+		RedScreen.gameObject.SetActive(false);
+
 
         Debug.Log("Enemy hit the player!");
 

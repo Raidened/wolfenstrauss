@@ -25,6 +25,8 @@ public class playerMove : MonoBehaviour
 
 	[SerializeField]private string nextScene;
     public GameObject PointNextLevel;
+    public GameObject PointTP;
+
     
     
     // Awake is called before the 
@@ -71,6 +73,11 @@ public class playerMove : MonoBehaviour
 		if (Vector2.Distance(transform.position, PointNextLevel.transform.position) <= 1f)
         {
             SceneManager.LoadScene(nextScene);
+        }
+
+		if (Vector2.Distance(transform.position, PointTP.transform.position) <= 2f)
+        {
+            transform.position = new Vector3(5.7f, 8.25f, 0f);
         }
 		
     }
